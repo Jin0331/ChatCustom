@@ -85,12 +85,12 @@ struct MessageView: View {
     }
 
     var body: some View {
-        HStack(alignment: .bottom, spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             if !message.user.isCurrentUser {
                 avatarView
             }
 
-            VStack(alignment: message.user.isCurrentUser ? .trailing : .leading, spacing: 2) {
+            VStack(alignment: message.user.isCurrentUser ? .trailing : .leading, spacing: 5) {
                 if !isDisplayingMessageMenu, let reply = message.replyMessage?.toMessage() {
                     replyBubbleView(reply)
                         .opacity(0.5)
@@ -101,6 +101,8 @@ struct MessageView: View {
                                 .frame(width: 2)
                         }
                 }
+                Text(message.user.name)
+                    .font(.caption)
                 bubbleView(message)
             }
 
@@ -129,7 +131,7 @@ struct MessageView: View {
 
             if !message.text.isEmpty {
                 textWithTimeView(message)
-                    .font(Font(font))
+                    .font(.footnote)
             }
 
             if let recording = message.recording {
@@ -307,13 +309,7 @@ struct MessageView_Preview: PreviewProvider {
         user: stan,
         status: .read,
         text: longMessage,
-        attachments: [
-            Attachment.randomImage(),
-            Attachment.randomImage(),
-            Attachment.randomImage(),
-            Attachment.randomImage(),
-            Attachment.randomImage(),
-        ]
+        attachments: []
     )
 
     static private var message = Message(
@@ -331,7 +327,7 @@ struct MessageView_Preview: PreviewProvider {
             MessageView(
                 viewModel: ChatViewModel(),
                 message: replyedMessage,
-                positionInUserGroup: .single,
+                positionInUserGroup: .first,
                 chatType: .conversation,
                 avatarSize: 32,
                 tapAvatarClosure: nil,

@@ -18,8 +18,9 @@ extension DateFormatter {
         let relativeDateFormatter = DateFormatter()
         relativeDateFormatter.timeStyle = .none
         relativeDateFormatter.dateStyle = .full
-        relativeDateFormatter.locale = Locale(identifier: "en_US")
+        relativeDateFormatter.locale = Locale(identifier: "ko_KR")
         relativeDateFormatter.doesRelativeDateFormatting = true
+        relativeDateFormatter.dateFormat = "yyyy년 M월 d일"
 
         return relativeDateFormatter
     }()

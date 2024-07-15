@@ -488,10 +488,15 @@ struct UIList<MessageContent: View, InputView: View>: UIViewRepresentable {
                     headerBuilder(sections[section].date)
                 } else {
                     Text(sections[section].formattedDate)
-                        .font(.system(size: 11))
-                        .rotationEffect(Angle(degrees: (type == .conversation ? 180 : 0)))
+                        .font(.system(size: 13))
+                        .bold()
+                        .padding(6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                         .padding(10)
-                        .padding(.bottom, 8)
+                        .padding(.vertical, 10)
                         .foregroundColor(.gray)
                 }
             }

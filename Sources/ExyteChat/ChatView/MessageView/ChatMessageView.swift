@@ -39,7 +39,7 @@ struct ChatMessageView<MessageContent: View>: View {
                 MessageView(
                     viewModel: viewModel,
                     message: row.message,
-                    positionInUserGroup: row.positionInUserGroup,
+                    positionInUserGroup: .last,
                     chatType: chatType,
                     avatarSize: avatarSize,
                     tapAvatarClosure: tapAvatarClosure,
