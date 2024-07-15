@@ -101,8 +101,10 @@ struct MessageView: View {
                                 .frame(width: 2)
                         }
                 }
-                Text(message.user.name)
-                    .font(.caption)
+                if !message.user.isCurrentUser {
+                    Text(message.user.name)
+                        .font(.caption)
+                }
                 bubbleView(message)
             }
 

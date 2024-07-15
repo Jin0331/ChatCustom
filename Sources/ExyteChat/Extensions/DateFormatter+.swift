@@ -10,6 +10,8 @@ extension DateFormatter {
 
         formatter.dateStyle = .none
         formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "HH:mm a"
 
         return formatter
     }()
