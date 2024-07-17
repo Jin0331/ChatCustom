@@ -18,6 +18,6 @@ struct AvatarView: View {
             Rectangle().fill(Color.gray)
         }
         .viewSize(avatarSize)
-        .clipShape(Circle())
+        .cornerRadius(8)
     }
 }
